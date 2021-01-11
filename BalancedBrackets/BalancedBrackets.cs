@@ -15,7 +15,7 @@ namespace BalancedBracketsNS
          * The string may contain non-bracket characters as well.
          *
          * These strings have balanced brackets:
-         *  "[LaunchCode]", "Launch[Code]", "[]LaunchCode", "", "[]"
+         *  "[LaunchCode]", "Launch[Code]", "[]LaunchCode", "", "[]", "[Lau[nch]Co]de"
          *
          * While these do not:
          *   "[LaunchCode", "Launch]Code[", "[", "]["
@@ -28,6 +28,10 @@ namespace BalancedBracketsNS
             int brackets = 0;
             foreach (char ch in str.ToCharArray())
             {
+                if (brackets < 0)
+                {
+                    return false;
+                }
                 if (ch == '[')
                 {
                     brackets++;
@@ -35,7 +39,7 @@ namespace BalancedBracketsNS
                 else if (ch == ']')
                 {
                     brackets--;
-                }
+                }          
             }
             return brackets == 0;
         }
