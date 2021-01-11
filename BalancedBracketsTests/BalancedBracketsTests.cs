@@ -7,6 +7,28 @@ namespace BalancedBracketsTests
     public class BalancedBracketsTests
     {
         // TODO: Add tests to this file.
+        /* Possible Test cases
+         * 
+         * Positive
+         * "[]"
+         * "[Balanced]WithText"
+         * "[[]]"
+         * "Balance[With[Multi]ple]Brackets"
+         * 
+         * Negative
+         * "]["
+         * "["
+         * "]"
+         * "Unbalanced[WithText"
+         * "Unbalanced[Multiple[With]Text"
+         * "Unbalance[Multiple]With]Text"
+         * 
+         * Edge (positive cases on the edge)
+         * ""
+         * "Balanced"
+         * "[[] [[]]]"
+         * 
+         */
 
         [TestMethod]
         public void EmptyTest()
@@ -19,6 +41,17 @@ namespace BalancedBracketsTests
         {
             //Assert.IsTrue(BalancedBrackets.HasBalancedBrackets("") == true);
             string testInput = "";
+
+            bool actualOutput = BalancedBrackets.HasBalancedBrackets(testInput);
+            bool expectedOutput = true;
+
+            Assert.AreEqual(expectedOutput, actualOutput);
+        }
+
+        [TestMethod]
+        public void TextWithoutBrakets()
+        {
+            string testInput = "Balanced";
 
             bool actualOutput = BalancedBrackets.HasBalancedBrackets(testInput);
             bool expectedOutput = true;
